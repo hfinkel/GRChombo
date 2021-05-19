@@ -21,7 +21,7 @@
 #include "GRLevelData.hpp"
 #include "InterpSource.hpp"
 #include "SimulationParameters.hpp"
-#include "TruncationErrorTagging.hpp"
+#include "TruncationErrorTaggingWeighted.hpp"
 #include "UserVariables.hpp" // need NUM_VARS
 #include <fstream>
 #include <limits>

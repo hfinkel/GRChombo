@@ -399,7 +399,7 @@ void GRAMRLevel::computeTruncationError(
     FArrayBox &tagging_criterion, const FArrayBox &a_state_truncation_error)
 {
     BoxLoops::loop(
-        TruncationErrorTagging(m_p.num_truncation_error_vars, m_level),
+        TruncationErrorTaggingWeighted(m_p.num_truncation_error_vars, m_level),
         a_state_truncation_error, tagging_criterion);
 }
 
