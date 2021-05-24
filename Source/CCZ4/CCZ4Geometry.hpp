@@ -43,23 +43,23 @@ class CCZ4Geometry
         data_t boxtildechi = 0;
 
         Tensor<2, data_t> covdtilde2chi;
-        FOR2(k, l)
+        FOR(k, l)
         {
             covdtilde2chi[k][l] = d2.chi[k][l];
-            FOR1(m) { covdtilde2chi[k][l] -= chris.ULL[m][k][l] * d1.chi[m]; }
+            FOR(m) { covdtilde2chi[k][l] -= chris.ULL[m][k][l] * d1.chi[m]; }
         }
 
-        FOR2(k, l) { boxtildechi += h_UU[k][l] * covdtilde2chi[k][l]; }
+        FOR(k, l) { boxtildechi += h_UU[k][l] * covdtilde2chi[k][l]; }
 
         data_t dchi_dot_dchi = 0;
         {
-            FOR2(m, n) { dchi_dot_dchi += h_UU[m][n] * d1.chi[m] * d1.chi[n]; }
+            FOR(m, n) { dchi_dot_dchi += h_UU[m][n] * d1.chi[m] * d1.chi[n]; }
         }
 
-        FOR2(i, j)
+        FOR(i, j)
         {
             data_t ricci_tilde = 0;
-            FOR1(k)
+            FOR(k)
             {
                 // Trick: For CCZ4, we can add Z terms to ricci by changing
                 // Gamma to chrisvec This way of writing it allows the user to
@@ -68,10 +68,10 @@ class CCZ4Geometry
                                       vars.h[k][j] * d1.Gamma[k][i]);
                 ricci_tilde += 0.5 * (vars.Gamma[k] - 2 * Z_over_chi[k]) *
                                (chris.LLL[i][j][k] + chris.LLL[j][i][k]);
-                FOR1(l)
+                FOR(l)
                 {
                     ricci_tilde -= 0.5 * h_UU[k][l] * d2.h[i][j][k][l];
-                    FOR1(m)
+                    FOR(m)
                     {
                         ricci_tilde +=
                             h_UU[l][m] *
@@ -90,7 +90,7 @@ class CCZ4Geometry
                            (2 * vars.chi));
 
             data_t z_terms = 0;
-            FOR1(k)
+            FOR(k)
             {
                 z_terms +=
                     Z_over_chi[k] *
